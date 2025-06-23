@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const loginStatus = document.getElementById('login-status');
+    const view portfolio = document.getElementById('go-to-index'); // ✅ NEW
 
     // 🔐 Hardcoded credentials (STATIC ONLY)
     const validCredentials = {
@@ -17,21 +18,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value.trim();
 
-        // Simple validation against hardcoded users
         if (validCredentials[username] && validCredentials[username] === password) {
             loginStatus.textContent = 'Login successful! Redirecting...';
             loginStatus.className = 'form-status success';
 
-            // Optional: Save session flag in localStorage
             localStorage.setItem('adminLoggedIn', 'true');
             localStorage.setItem('adminUser', username);
 
             setTimeout(() => {
-                window.location.href = 'admin.html'; // Redirect to admin page
+                window.location.href = 'admin.html'; // ✅ Redirect after login
             }, 1000);
         } else {
             loginStatus.textContent = 'Invalid username or password.';
             loginStatus.className = 'form-status error';
         }
     });
+
+    // ✅ Back to Portfolio
+    if (view portfolio) {
+        view portfolio.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    }
 });
