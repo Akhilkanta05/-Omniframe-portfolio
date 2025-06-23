@@ -244,7 +244,7 @@ img {
     justify-content: center;
     text-align: center;
     color: var(--text-light);
-    background: url('images/hero-background.jpg') no-repeat center center/cover;
+    background: url('public/images/hero-background.jpg') no-repeat center center/cover;
     background-attachment: fixed; /* Parallax effect */
     margin-top: -80px; /* Offset for fixed header */
     padding-top: 80px; /* Push content down */
