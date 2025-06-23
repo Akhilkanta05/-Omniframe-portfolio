@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
     const loginStatus = document.getElementById('login-status');
-    const view portfolio = document.getElementById('go-to-index'); // ✅ NEW
+    const goToIndexBtn = document.getElementById('go-to-index'); // Button: "View Portfolio"
 
     // 🔐 Hardcoded credentials (STATIC ONLY)
     const validCredentials = {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('adminUser', username);
 
             setTimeout(() => {
-                window.location.href = 'admin.html'; // ✅ Redirect after login
+                window.location.href = 'admin.html';
             }, 1000);
         } else {
             loginStatus.textContent = 'Invalid username or password.';
@@ -34,9 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ✅ Back to Portfolio
-    if (view portfolio) {
-        view portfolio.addEventListener('click', () => {
+    // ✅ View Portfolio redirect
+    if (goToIndexBtn) {
+        goToIndexBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default link behavior
             window.location.href = 'index.html';
         });
     }
