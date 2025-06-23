@@ -40,16 +40,21 @@
 
         <!-- Gallery Section: Dynamically loaded images -->
         <section id="gallery" class="gallery-section section-padding">
-            <h2 class="section-title">My Portfolio</h2>
-            <div class="gallery-grid">
-                <!-- Images will be dynamically loaded here by JavaScript from the server -->
-                <!-- Example of what a dynamically loaded item will look like (but it won't be in the HTML directly):
-                <div class="gallery-item" data-src="images/gallery/photo1_large.jpg" data-caption="Stunning Landscape View" data-index="0">
-                    <img class="lazy-load" data-src="images/gallery/photo1.jpg" alt="Stunning Landscape View">
-                </div>
-                -->
-            </div>
-        </section>
+    <h2 class="section-title">My Portfolio</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item" data-src="images/gallery/img1.jpg" data-caption="Image 1" data-index="0">
+            <img class="lazy-load" src="images/gallery/img1.jpg" alt="Image 1">
+        </div>
+        <div class="gallery-item" data-src="images/gallery/img2.jpg" data-caption="Image 2" data-index="1">
+            <img class="lazy-load" src="images/gallery/img2.jpg" alt="Image 2">
+        </div>
+        <div class="gallery-item" data-src="images/gallery/img3.jpg" data-caption="Image 3" data-index="2">
+            <img class="lazy-load" src="images/gallery/img3.jpg" alt="Image 3">
+        </div>
+        <!-- Add more images as needed -->
+    </div>
+</section>
+
 
         <!-- About Section: Your profile and story -->
         <section id="about" class="about-section section-padding bg-light">
