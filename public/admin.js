@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Redirect to index.html (View Portfolio)
   if (goToIndexBtn) {
     goToIndexBtn.addEventListener('click', () => {
-      window.location.href = 'index.html';
+      window.location.href = '.. /index.html';
     });
   }
 
