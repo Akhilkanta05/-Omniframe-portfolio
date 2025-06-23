@@ -13,7 +13,7 @@ function staticLogin() {
   if (users[username] && users[username] === password) {
     // Store login in localStorage (optional)
     localStorage.setItem("staticAdmin", username);
-    window.location.href = "dashboard.html";
+    window.location.href = "admin.html";
   } else {
     errorMsg.textContent = "Invalid username or password.";
   }
