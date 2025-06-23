@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const filenames = await response.json();
             allGalleryImages = filenames.map((filename, index) => ({
-                src: `images/gallery/${filename}`,
-                largeSrc: `images/gallery/${filename}`,
+                src: `public/images/gallery/${filename}`,
+                largeSrc: `public/images/gallery/${filename}`,
                 caption: `Photo: ${filename.split('.')[0].replace(/[-_]/g, ' ')}`,
                 index
             }));
