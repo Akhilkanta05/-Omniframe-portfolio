@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const uploadStatus = document.getElementById('upload-status');
   const previewContainer = document.getElementById('preview-container');
   const logoutBtn = document.getElementById('logout-btn');
+  const goToIndexBtn = document.getElementById('go-to-index');
 
   // Logout Functionality
   logoutBtn.addEventListener('click', () => {
@@ -18,6 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     alert('Logged out successfully.');
     window.location.href = 'login.html';
   });
+
+  // Redirect to index.html (View Portfolio)
+  if (goToIndexBtn) {
+    goToIndexBtn.addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  }
 
   // Handle file preview only (no upload to server)
   uploadForm.addEventListener('submit', (e) => {
