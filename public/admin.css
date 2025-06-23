@@ -1,90 +1,45 @@
-/* public/admin.css */
-
-.admin-main {
-    padding-top: var(--header-height); /* Offset for fixed header */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-.admin-form {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.login-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
 }
 
-.admin-form input[type="file"] {
-    padding: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    width: 100%;
-    margin-top: 5px;
-    background-color: #fcfcfc;
+input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-.admin-form button.btn {
-    width: 100%;
-    margin-top: 20px;
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4a148c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.image-list-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
+button:hover {
+  background-color: #6a1b9a;
 }
 
-.image-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;        align-items: center;
-    text-align: center;
-    padding-bottom: 15px;
-    transition: transform 0.2s ease;
-}
-
-.image-card:hover {
-    transform: translateY(-5px);
-}
-
-.image-card img {
-    width: 100%;
-    height: 180px; /* Consistent height for thumbnails */
-    object-fit: cover;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.image-card span {
-    font-size: 0.9em;
-    color: #555;
-    word-break: break-all; /* Break long filenames */
-    padding: 0 10px;
-    margin-bottom: 10px;
-}
-
-.image-card .delete-btn {
-    background-color: var(--accent-color);
-    color: var(--text-light);
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
-}
-
-.image-card .delete-btn:hover {
-    background-color: #c0392b;
-}
-
-#loading-message, #no-images-message {
-    text-align: center;
-    grid-column: 1 / -1; /* Span across all columns */
-    font-size: 1.2em;
-    color: #777;
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 10px;
 }
