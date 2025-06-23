@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
 
-            // Close mobile nav if open
             const navLinks = document.querySelector('.nav-links');
             const navToggle = document.querySelector('.nav-toggle');
             if (navLinks.classList.contains('active')) {
@@ -20,23 +19,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                 const offsetPosition = elementPosition - headerOffset;
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         });
     });
 
-    // --- Sticky Header & Header Style Change on Scroll ---
+    // --- Sticky Header ---
     const siteHeader = document.querySelector('.site-header');
-
     const handleScroll = () => {
-        if (window.scrollY > 0) {
-            siteHeader.classList.add('scrolled');
-        } else {
-            siteHeader.classList.remove('scrolled');
-        }
+        if (window.scrollY > 0) siteHeader.classList.add('scrolled');
+        else siteHeader.classList.remove('scrolled');
 
         const sections = document.querySelectorAll('section');
         const headerHeight = siteHeader.offsetHeight;
@@ -44,50 +36,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sections.forEach(section => {
             if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                });
+                document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
                 const currentNavLink = document.querySelector(`.nav-links a[href="#${section.id}"]`);
-                if (currentNavLink) {
-                    currentNavLink.classList.add('active');
-                }
+                if (currentNavLink) currentNavLink.classList.add('active');
             }
         });
     };
-
     window.addEventListener('scroll', handleScroll);
     handleScroll();
 
-    // --- Mobile Navigation Toggle ---
+    // --- Mobile Navigation ---
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
-
     navToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         navToggle.classList.toggle('active');
     });
 
-    // --- Dynamic Gallery Loading & Lazy Loading Images ---
+    // --- Dynamic Gallery Loading from static gallery.json ---
     const galleryGrid = document.querySelector('.gallery-grid');
-    const API_BASE_URL = window.location.origin;
     let allGalleryImages = [];
 
     async function loadGalleryImages() {
         try {
-            const response = await fetch(`${API_BASE_URL}/api/images`);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const filenames = await response.json();
+            const response = await fetch('gallery.json');
+            if (!response.ok) throw new Error(`Failed to load gallery.json`);
 
-            allGalleryImages = filenames.map(filename => ({
-                src: `/images/gallery/${filename}`,
-                largeSrc: `/images/gallery/${filename}`,
-                caption: `Photo: ${filename.split('.')[0].replace(/[-_]/g, ' ')}`
+            const filenames = await response.json();
+            allGalleryImages = filenames.map((filename, index) => ({
+                src: `images/gallery/${filename}`,
+                largeSrc: `images/gallery/${filename}`,
+                caption: `Photo: ${filename.split('.')[0].replace(/[-_]/g, ' ')}`,
+                index
             }));
 
             galleryGrid.innerHTML = '';
 
             if (allGalleryImages.length === 0) {
-                galleryGrid.innerHTML = `<p class="info-message" style="text-align: center; grid-column: 1 / -1; color: #777;">No images found in the gallery. Please add some from the <a href="admin.html" target="_blank">Admin Panel</a>.</p>`;
+                galleryGrid.innerHTML = `<p class="info-message" style="text-align: center; grid-column: 1 / -1; color: #777;">No images found in the gallery.</p>`;
             } else {
                 allGalleryImages.forEach((imageData, index) => {
                     const galleryItem = document.createElement('div');
@@ -105,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             initLightboxItemListeners();
         } catch (error) {
             console.error('Error loading gallery images:', error);
-            galleryGrid.innerHTML = `<p class="error-message" style="text-align: center; grid-column: 1 / -1; color: #e74c3c;">Failed to load gallery images. Please ensure the server is running and images are present.</p>`;
+            galleryGrid.innerHTML = `<p class="error-message" style="text-align: center; grid-column: 1 / -1; color: #e74c3c;">Failed to load gallery images.</p>`;
         }
     }
 
@@ -121,36 +107,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     observer.unobserve(img);
                 }
             });
-        }, {
-            rootMargin: '0px 0px 100px 0px'
-        });
+        }, { rootMargin: '0px 0px 100px 0px' });
 
-        lazyImages.forEach(img => {
-            imageObserver.observe(img);
-        });
+        lazyImages.forEach(img => imageObserver.observe(img));
     }
 
-    // --- Lightbox Functionality ---
+    // --- Lightbox ---
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.querySelector('.lightbox-image');
     const lightboxCaption = document.querySelector('.lightbox-caption');
     const lightboxClose = document.querySelector('.lightbox-close');
     const prevBtn = document.querySelector('.lightbox-nav.prev');
     const nextBtn = document.querySelector('.lightbox-nav.next');
-
     let currentImageIndex = 0;
 
     function openLightbox(index) {
         currentImageIndex = index;
         const imageData = allGalleryImages[currentImageIndex];
-
         if (imageData) {
             lightboxImage.src = imageData.largeSrc;
             lightboxCaption.textContent = imageData.caption;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
-        } else {
-            console.error('Image data not found for index:', index);
         }
     }
 
@@ -161,50 +139,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function navigateLightbox(direction) {
         currentImageIndex += direction;
-        if (currentImageIndex < 0) {
-            currentImageIndex = allGalleryImages.length - 1;
-        } else if (currentImageIndex >= allGalleryImages.length) {
-            currentImageIndex = 0;
-        }
+        if (currentImageIndex < 0) currentImageIndex = allGalleryImages.length - 1;
+        else if (currentImageIndex >= allGalleryImages.length) currentImageIndex = 0;
         openLightbox(currentImageIndex);
     }
 
     function initLightboxItemListeners() {
-        document.querySelectorAll('.gallery-item').forEach((item) => {
+        document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', handleGalleryItemClick);
         });
     }
 
     function handleGalleryItemClick(e) {
         const clickedIndex = parseInt(e.currentTarget.dataset.index);
-        if (!isNaN(clickedIndex)) {
-            openLightbox(clickedIndex);
-        }
+        if (!isNaN(clickedIndex)) openLightbox(clickedIndex);
     }
 
     lightboxClose.addEventListener('click', closeLightbox);
     prevBtn.addEventListener('click', () => navigateLightbox(-1));
     nextBtn.addEventListener('click', () => navigateLightbox(1));
-
     lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
+        if (e.target === lightbox) closeLightbox();
     });
-
     document.addEventListener('keydown', (e) => {
         if (lightbox.classList.contains('active')) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            } else if (e.key === 'ArrowLeft') {
-                navigateLightbox(-1);
-            } else if (e.key === 'ArrowRight') {
-                navigateLightbox(1);
-            }
+            if (e.key === 'Escape') closeLightbox();
+            else if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            else if (e.key === 'ArrowRight') navigateLightbox(1);
         }
     });
 
-    // --- Contact Form Submission (Basic Client-side) ---
+    // --- Contact Form ---
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
@@ -224,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
             displayFormStatus('Sending message...', '');
 
             try {
-                // Simulated success
                 await new Promise(resolve => setTimeout(resolve, 1500));
                 displayFormStatus('Thank you for your message! I will get back to you soon.', 'success');
                 contactForm.reset();
