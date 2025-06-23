@@ -1,20 +1,37 @@
-function staticLogin() {
-  const username = document.getElementById("username").value.trim();
-  const password = document.getElementById("password").value.trim();
-  const errorMsg = document.getElementById("errorMsg");
+// login.js
 
-  // Hardcoded credentials (you can add more)
-  const users = {
-    admin: "password123",
-    akhil: "akhil",
-    nikhil: "nikhil"
-  };
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form');
+    const loginStatus = document.getElementById('login-status');
 
-  if (users[username] && users[username] === password) {
-    // Store login in localStorage (optional)
-    localStorage.setItem("staticAdmin", username);
-    window.location.href = "admin.html";
-  } else {
-    errorMsg.textContent = "Invalid username or password.";
-  }
-}
+    // 🔐 Hardcoded credentials (STATIC ONLY)
+    const validCredentials = {
+        admin: 'password123',
+        akhil: 'akhil',
+        nikhil: 'nikhil'
+    };
+
+    loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        // Simple validation against hardcoded users
+        if (validCredentials[username] && validCredentials[username] === password) {
+            loginStatus.textContent = 'Login successful! Redirecting...';
+            loginStatus.className = 'form-status success';
+
+            // Optional: Save session flag in localStorage
+            localStorage.setItem('adminLoggedIn', 'true');
+            localStorage.setItem('adminUser', username);
+
+            setTimeout(() => {
+                window.location.href = 'admin.html'; // Redirect to admin page
+            }, 1000);
+        } else {
+            loginStatus.textContent = 'Invalid username or password.';
+            loginStatus.className = 'form-status error';
+        }
+    });
+});
