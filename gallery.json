@@ -1,5 +1,5 @@
 {
   "nature": ["n1.jpg", "n2.jpg"],
   "portraits": ["p1.jpg", "p2.jpg"],
-  "lanscape": ["l1.jpg", "l2.jpg"]
+  "landscape": ["l1.jpg", "l2.jpg"]
 }
