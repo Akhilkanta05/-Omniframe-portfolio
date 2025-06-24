@@ -6,7 +6,8 @@
     --accent-color: #E67E6A;       /* Optional highlight (from black-70 or add one like the red in your old theme) */
 
     /* Text colors */
-    --text-dark: #0A0E15;          /* d.reverse (darkest black) */    --text-light: #FFFFFF;         /* d.header */
+    --text-dark: #0A0E15;          /* d.reverse (darkest black) */
+    --text-light: #FFFFFF;         /* d.header */
     --text-description: #E0E4EB;   /* d.description */
 
     /* Backgrounds */
@@ -30,7 +31,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;}
+    box-sizing: border-box;
+}
 
 html {
     scroll-behavior: smooth;
@@ -45,8 +47,7 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--primary-color);
-    transition: color 0.3s ease;
+    color: var(--primary-color);    transition: color 0.3s ease;
 }
 
 a:hover {
@@ -83,13 +84,11 @@ img {
     content: '';
     position: absolute;
     left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
+    bottom: 0;    transform: translateX(-50%);
     width: 60px;
     height: 4px;
     background-color: var(--primary-color);
-    border-radius: 2px;
-}
+    border-radius: 2px;}
 
 .section-subtitle {
     text-align: center;
@@ -116,7 +115,8 @@ img {
 }
 
 .btn-primary {
-    background-color: var(--primary-color);    color: var(--text-light);
+    background-color: var(--primary-color);
+    color: var(--text-light);
 }
 
 .btn-primary:hover {
@@ -136,10 +136,8 @@ img {
     transform: translateY(-2px);
 }
 
-/* --- Header & Navigation --- */
-.site-header {
-    background-color: rgba(255, 255, 255, 0.95); /* Kept as is, no direct variable mapping for RGBA */
-    padding: 0 20px;
+/* --- Header & Navigation --- */.site-header {
+    background-color: rgba(255, 255, 255, 0.95); /* Kept as is, no direct variable mapping for RGBA */    padding: 0 20px;
     position: fixed;
     width: 100%;
     top: 0;
@@ -157,8 +155,7 @@ img {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
-.site-header.scrolled .logo,
-.site-header.scrolled .nav-links a {
+.site-header.scrolled .logo,.site-header.scrolled .nav-links a {
     color: var(--text-light);
 }
 
@@ -193,14 +190,14 @@ img {
     font-size: 1.05em;
     color: var(--text-dark);
     position: relative;
-    padding-bottom: 5px;}
+    padding-bottom: 5px;
+}
 
 .nav-links a::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0;
-    width: 0;
+    bottom: 0;    width: 0;
     height: 2px;
     background-color: var(--primary-color);
     transition: width 0.3s ease;
@@ -221,7 +218,8 @@ img {
     z-index: 1001; /* Ensure it's above other elements when active */
 }
 
-.nav-toggle span {    display: block;
+.nav-toggle span {
+    display: block;
     width: 25px;
     height: 3px;
     background-color: var(--text-dark);
@@ -237,7 +235,8 @@ img {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
 
-.nav-toggle.active span:nth-child(2) {    opacity: 0;
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
 }
 
 .nav-toggle.active span:nth-child(3) {
@@ -253,10 +252,12 @@ img {
     justify-content: center;
     text-align: center;
     color: var(--text-light);
-    background: url('public/images/hero-background.jpg') no-repeat center center/cover;    background-attachment: fixed; /* Parallax effect */
+    background: url('public/images/hero-background.jpg') no-repeat center center/cover;
+    background-attachment: fixed; /* Parallax effect */
     margin-top: -80px; /* Offset for fixed header */
     padding-top: 80px; /* Push content down */
-}.hero-section::before {
+}
+.hero-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -306,11 +307,13 @@ img {
 }
 
 .gallery-item:hover {
-    transform: translateY(-5px);    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-item img {
-    width: 100%;    height: 100%; /* ✅ Fill the container */
+    width: 100%;
+    height: 100%; /* ✅ Fill the container */
     object-fit: cover; /* ✅ Fill without distortion */
     border-radius: 8px;
     transition: transform 0.5s ease-in-out;
@@ -324,8 +327,7 @@ img {
 
 /* Lazy load placeholder */
 .gallery-item img.lazy-load:not(.loaded) {
-    background-color: var(--secondary-color); /* Updated from #e0e0e0 */
-    min-height: 250px; /* Maintain height during load */
+    background-color: var(--secondary-color); /* Updated from #e0e0e0 */    min-height: 250px; /* Maintain height during load */
 }
 
 /* --- About Section --- */
@@ -366,8 +368,7 @@ img {
     max-width: 600px;
     margin: 0 auto;
     padding: 30px;
-    background-color: var(--bg-light); /* Updated from #fff */
-    border-radius: 10px;
+    background-color: var(--bg-light); /* Updated from #fff */    border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -378,24 +379,34 @@ img {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--bg-dark);
+    font-weight: 600;    color: var(--bg-dark); /* This matches the dark labels in the image */
 }
 
+/* General styling for text, email, and textarea inputs (e.g., Email field) */
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group input[type="number"],
 .form-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
+    border: 1px solid var(--border-color); /* Light border as seen in Email field */
+    border-radius: 5px; /* Rounded corners as seen in Email field */
     font-family: var(--font-body);
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box; /* Ensure padding doesn't shrink the width */
 }
 
+/* Specific styling for Phone Number input (assuming type="number" or type="tel") */
+.form-group input[type="number"],
+.form-group input[type="tel"] {
+    width: 100%; /* Ensure consistent width and padding */
+    padding: 12px;
+    font-family: var(--font-body);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    border: 1px solid var(--primary-color); /* Darker border from your palette */
+    border-radius: 2px; /* Less rounded corners to match the image */
+}
 
 .form-group input:focus,
 .form-group textarea:focus {
@@ -409,7 +420,8 @@ img {
 }
 
 .contact-form .btn {
-    width: 100%;    padding: 15px;
+    width: 100%;
+    padding: 15px;
     font-size: 1.1em;
 }
 
@@ -437,8 +449,7 @@ img {
 /* --- Footer --- */
 .site-footer {
     background-color: var(--bg-dark);
-    color: var(--text-light);
-    padding: 40px 20px;
+    color: var(--text-light);    padding: 40px 20px;
     text-align: center;
 }
 
@@ -467,8 +478,7 @@ img {
     filter: invert(100%); /* Make icons white */
 }
 .site-footer p {
-    font-size: 0.9em;
-    color: rgba(255, 255, 255, 0.7); /* Kept as is, requires RGBA variable */
+    font-size: 0.9em;    color: rgba(255, 255, 255, 0.7); /* Kept as is, requires RGBA variable */
 }
 
 /* --- Lightbox Styles --- */
@@ -496,9 +506,7 @@ img {
     max-width: 90%;
     max-height: 90%;
     text-align: center;
-}
-
-.lightbox-image {
+}.lightbox-image {
     max-width: 100%;
     max-height: 80vh; /* Limit image height */
     object-fit: contain;
@@ -508,8 +516,7 @@ img {
 
 .lightbox-caption {
     color: var(--text-light); /* Updated from #fff */
-    font-size: 1.2em;
-    margin-top: 10px;
+    font-size: 1.2em;    margin-top: 10px;
 }
 
 .lightbox-close {
@@ -529,14 +536,14 @@ img {
     color: var(--accent-color);
     text-decoration: none;
     cursor: pointer;
-}.lightbox-nav {
+}
+.lightbox-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5); /* Kept as is for overlay */
     color: var(--text-light); /* Updated from white */
-    padding: 15px 20px;
-    border: none;
+    padding: 15px 20px;    border: none;
     cursor: pointer;
     font-size: 2em;
     transition: background-color 0.3s ease;
@@ -567,7 +574,8 @@ img {
     }
 
     .section-title {
-        font-size: 2.2em;    }
+        font-size: 2.2em;
+    }
 
     .about-content {
         flex-direction: column;
@@ -583,7 +591,8 @@ img {
     .site-header {
         height: auto;
         padding: 15px 20px;
-    }    .navbar {
+    }
+    .navbar {
         flex-wrap: wrap;
     }
 
@@ -620,8 +629,7 @@ img {
     }
 
     .hero-section {
-        height: 80vh; /* Adjust height for mobile */
-        margin-top: 0; /* No offset needed, header pushes content */
+        height: 80vh; /* Adjust height for mobile */        margin-top: 0; /* No offset needed, header pushes content */
         padding-top: var(--header-height);
     }
 
