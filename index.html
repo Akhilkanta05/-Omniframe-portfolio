@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OmniFrame Photography</title>
-    <!-- Google Fonts for better typography: Montserrat for headings, Open Sans for body text -->    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Link to your main stylesheet -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,8 +18,6 @@
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <!-- Optional: Link to your admin page (for development/testing) -->
-                
             </ul>
             <button class="nav-toggle" aria-label="Toggle navigation">
                 <span></span>
@@ -29,7 +28,7 @@
     </header>
 
     <main>
-        <!-- Hero Section: Full-screen impactful introduction -->
+        <!-- Hero Section -->
         <section id="home" class="hero-section">
             <div class="hero-content">
                 <h1>Capturing Moments, Telling Stories.</h1>
@@ -38,30 +37,45 @@
             </div>
         </section>
 
+        <!-- Gallery Section -->
         <section id="gallery" class="gallery-section section-padding">
-  <h2 class="section-title">My Portfolio</h2>
-  <div class="gallery-grid" id="gallery-grid">
-    <!-- Images will be inserted here by JavaScript -->
-  </div>
-</section>
-        <!-- About Section: Your profile and story -->
+            <h2 class="section-title">My Portfolio</h2>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Images loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- About Section -->
         <section id="about" class="about-section section-padding bg-light">
             <div class="about-content">
-                <div class="about-image">                    <img src="public/images/profile.jpg" alt="Your Profile Picture">
+                <div class="about-image">
+                    <img src="public/images/profile.jpg" alt="Your Profile Picture">
                 </div>
                 <div class="about-text">
                     <h2 class="section-title">About Me</h2>
                     <p>Hello! I'm Venkatesh Nikhil, a passionate photographer with a deep love for capturing the beauty in everyday life. My journey began 4 years ago, and since then, I've dedicated myself to freezing moments in time, creating images that evoke emotion and tell compelling stories.</p>
-                    <p>I specialize in Nature,portrait, landscape, event, street photography, always striving to find unique perspectives and light. My goal is to create timeless pieces that resonate with viewers and offer a fresh look at the world around us.</p>
+                    <p>I specialize in Nature, portrait, landscape, event, street photography, always striving to find unique perspectives and light. My goal is to create timeless pieces that resonate with viewers and offer a fresh look at the world around us.</p>
                     <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                 </div>
-            </div>        </section>
+            </div>
+        </section>
 
-        <!-- Contact Section: Form to get in touch -->
+        <!-- Contact Section -->
         <section id="contact" class="contact-section section-padding">
             <h2 class="section-title">Let's Connect</h2>
             <p class="section-subtitle">Have a project in mind or just want to say hello? I'd love to hear from you!</p>
-            <form id="contact-form" class="contact-form">
+            <form
+                id="contact-form"
+                class="contact-form"
+                action="https://formspree.io/f/movwkbkz"
+                method="POST"
+            >
+                <!-- Spam Protection Honeypot -->
+                <input type="text" name="_honey" style="display:none">
+                
+                <!-- Redirect After Submission -->
+                <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -77,21 +91,22 @@
                 <button type="submit" class="btn btn-primary">Send Message</button>
                 <div id="form-status" class="form-status"></div>
             </form>
-        </section>    </main>
+        </section>
+    </main>
 
     <!-- Footer Section -->
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-social">
-                <!-- Replace '#' with your actual social media links -->
-                <a href="https://www.instagram.com/omniframe.photography?igsh=ZGt6a2tyZWl1eGhm" target="_blank" aria-label="Instagram"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png" alt="Instagram"></a>
-                
+                <a href="https://www.instagram.com/omniframe.photography?igsh=ZGt6a2tyZWl1eGhm" target="_blank" aria-label="Instagram">
+                    <img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png" alt="Instagram">
+                </a>
             </div>
             <p>&copy; 2023 Your Name. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Lightbox Modal Structure: Hidden by default, shown by JavaScript -->
+    <!-- Lightbox Modal -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close" aria-label="Close Lightbox">&times;</span>
         <div class="lightbox-content">
@@ -102,7 +117,7 @@
         <button class="lightbox-nav next" aria-label="Next image">&#10095;</button>
     </div>
 
-    <!-- Link to your main JavaScript file -->
+    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
