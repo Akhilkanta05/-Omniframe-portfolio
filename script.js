@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.classList.toggle('active');
     });
 
-    // --- Dynamic Gallery Loading from static gallery.json ---
+    // --- Dynamic Gallery Loading from static gallery.json with folders ---
     const galleryGrid = document.querySelector('.gallery-grid');
     let allGalleryImages = [];
 
@@ -62,54 +62,47 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('gallery.json');
             if (!response.ok) throw new Error(`Failed to load gallery.json`);
 
-            const filenames = await response.json();
-            allGalleryImages = filenames.map((filename, index) => ({
-                src: `public/images/gallery/${filename}`,
-                largeSrc: `public/images/gallery/${filename}`,
-                caption: `Photo: ${filename.split('.')[0].replace(/[-_]/g, ' ')}`,
-                index
-            }));
-
+            const galleryData = await response.json();
             galleryGrid.innerHTML = '';
 
-            if (allGalleryImages.length === 0) {
-                galleryGrid.innerHTML = `<p class="info-message" style="text-align: center; grid-column: 1 / -1; color: #777;">No images found in the gallery.</p>`;
-            } else {
-                allGalleryImages.forEach((imageData, index) => {
-                    const galleryItem = document.createElement('div');
-                    galleryItem.className = 'gallery-item';
-                    galleryItem.dataset.largeSrc = imageData.largeSrc;
-                    galleryItem.dataset.caption = imageData.caption;
-                    galleryItem.dataset.index = index;
+            Object.entries(galleryData).forEach(([folderName, images], index) => {
+                const folderItem = document.createElement('div');
+                folderItem.className = 'gallery-folder';
+                folderItem.innerHTML = `
+                    <div class="folder-preview" data-folder="${folderName}" data-index="${index}">
+                        <img src="public/images/gallery/${folderName}/${images[0]}" alt="${folderName}" class="folder-thumbnail">
+                        <h3>${folderName.charAt(0).toUpperCase() + folderName.slice(1)}</h3>
+                    </div>
+                `;
+                galleryGrid.appendChild(folderItem);
+            });
 
-                    galleryItem.innerHTML = `<img class="lazy-load" data-src="${imageData.src}" alt="${imageData.caption}">`;
-                    galleryGrid.appendChild(galleryItem);
-                });
-            }
-
-            initLazyLoading();
-            initLightboxItemListeners();
+            initFolderClickListeners(galleryData);
         } catch (error) {
             console.error('Error loading gallery images:', error);
             galleryGrid.innerHTML = `<p class="error-message" style="text-align: center; grid-column: 1 / -1; color: #e74c3c;">Failed to load gallery images.</p>`;
         }
     }
 
-    function initLazyLoading() {
-        const lazyImages = document.querySelectorAll('img.lazy-load');
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy-load');
-                    img.classList.add('loaded');
-                    observer.unobserve(img);
-                }
+    function initFolderClickListeners(folders) {
+        document.querySelectorAll('.folder-preview').forEach(folder => {
+            folder.addEventListener('click', () => {
+                const folderName = folder.dataset.folder;
+                const images = folders[folderName];
+                openLightboxGallery(folderName, images);
             });
-        }, { rootMargin: '0px 0px 100px 0px' });
+        });
+    }
 
-        lazyImages.forEach(img => imageObserver.observe(img));
+    function openLightboxGallery(folderName, images) {
+        allGalleryImages = images.map((img, i) => ({
+            src: `public/images/gallery/${folderName}/${img}`,
+            largeSrc: `public/images/gallery/${folderName}/${img}`,
+            caption: `${folderName} - ${img.split('.')[0]}`,
+            index: i
+        }));
+
+        openLightbox(0);
     }
 
     // --- Lightbox ---
@@ -144,17 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
         openLightbox(currentImageIndex);
     }
 
-    function initLightboxItemListeners() {
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', handleGalleryItemClick);
-        });
-    }
-
-    function handleGalleryItemClick(e) {
-        const clickedIndex = parseInt(e.currentTarget.dataset.index);
-        if (!isNaN(clickedIndex)) openLightbox(clickedIndex);
-    }
-
     lightboxClose.addEventListener('click', closeLightbox);
     prevBtn.addEventListener('click', () => navigateLightbox(-1));
     nextBtn.addEventListener('click', () => navigateLightbox(1));
@@ -168,45 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (e.key === 'ArrowRight') navigateLightbox(1);
         }
     });
-
-    // --- Contact Form ---
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const name = contactForm.querySelector('#name').value;
-            const email = contactForm.querySelector('#email').value;
-            const message = contactForm.querySelector('#message').value;
-
-            if (!name || !email || !message) {
-                displayFormStatus('Please fill in all fields.', 'error');
-                return;
-            }
-
-            displayFormStatus('Sending message...', '');
-
-            try {
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                displayFormStatus('Thank you for your message! I will get back to you soon.', 'success');
-                contactForm.reset();
-            } catch (error) {
-                console.error('Form submission error:', error);
-                displayFormStatus('An error occurred. Please try again later.', 'error');
-            }
-        });
-    }
-
-    function displayFormStatus(message, type) {
-        formStatus.textContent = message;
-        formStatus.className = `form-status ${type}`;
-        formStatus.style.display = 'block';
-        setTimeout(() => {
-            formStatus.style.display = 'none';
-        }, 5000);
-    }
 
     loadGalleryImages();
 });
