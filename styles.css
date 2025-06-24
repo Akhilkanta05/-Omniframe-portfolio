@@ -8,9 +8,7 @@
     /* Text colors */
     --text-dark: #0A0E15;          /* d.reverse (darkest black) */
     --text-light: #FFFFFF;         /* d.header */
-    --text-description: #E0E4EB;   /* d.description */
-
-    /* Backgrounds */
+    --text-description: #E0E4EB;   /* d.description */    /* Backgrounds */
     --bg-dark: #0A0E15;            /* Dark mode base (black-100) */
     --bg-light: #FFFFFF;           /* Light mode base (white-100) */
 
@@ -47,7 +45,8 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--primary-color);    transition: color 0.3s ease;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 
 a:hover {
@@ -84,11 +83,13 @@ img {
     content: '';
     position: absolute;
     left: 50%;
-    bottom: 0;    transform: translateX(-50%);
+    bottom: 0;
+    transform: translateX(-50%);
     width: 60px;
     height: 4px;
     background-color: var(--primary-color);
-    border-radius: 2px;}
+    border-radius: 2px;
+}
 
 .section-subtitle {
     text-align: center;
@@ -136,8 +137,10 @@ img {
     transform: translateY(-2px);
 }
 
-/* --- Header & Navigation --- */.site-header {
-    background-color: rgba(255, 255, 255, 0.95); /* Kept as is, no direct variable mapping for RGBA */    padding: 0 20px;
+/* --- Header & Navigation --- */
+.site-header {
+    background-color: rgba(255, 255, 255, 0.95); /* Kept as is, no direct variable mapping for RGBA */
+    padding: 0 20px;
     position: fixed;
     width: 100%;
     top: 0;
@@ -155,7 +158,8 @@ img {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
-.site-header.scrolled .logo,.site-header.scrolled .nav-links a {
+.site-header.scrolled .logo,
+.site-header.scrolled .nav-links a {
     color: var(--text-light);
 }
 
@@ -197,7 +201,8 @@ img {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0;    width: 0;
+    bottom: 0;
+    width: 0;
     height: 2px;
     background-color: var(--primary-color);
     transition: width 0.3s ease;
@@ -271,8 +276,7 @@ img {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
-    padding: 20px;
+    max-width: 800px;    padding: 20px;
 }
 
 .hero-content h1 {
@@ -291,8 +295,7 @@ img {
 
 /* --- Gallery Section --- */
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    display: grid;    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
     gap: 20px;
 }
 
@@ -327,7 +330,8 @@ img {
 
 /* Lazy load placeholder */
 .gallery-item img.lazy-load:not(.loaded) {
-    background-color: var(--secondary-color); /* Updated from #e0e0e0 */    min-height: 250px; /* Maintain height during load */
+    background-color: var(--secondary-color); /* Updated from #e0e0e0 */
+    min-height: 250px; /* Maintain height during load */
 }
 
 /* --- About Section --- */
@@ -361,14 +365,13 @@ img {
     margin-bottom: 15px;
     font-size: 1.1em;
     color: var(--primary-color); /* Updated from #555 */
-}
-
-/* --- Contact Section --- */
+}/* --- Contact Section --- */
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
     padding: 30px;
-    background-color: var(--bg-light); /* Updated from #fff */    border-radius: 10px;
+    background-color: var(--bg-light); /* Updated from #fff */
+    border-radius: 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -379,12 +382,15 @@ img {
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 600;    color: var(--bg-dark); /* This matches the dark labels in the image */
+    font-weight: 600;
+    color: var(--bg-dark); /* This matches the dark labels in the image */
 }
 
-/* General styling for text, email, and textarea inputs (e.g., Email field) */
+/* Unified styling for all text-based inputs (text, email, number/tel, textarea) */
 .form-group input[type="text"],
 .form-group input[type="email"],
+.form-group input[type="number"], /* Included here */
+.form-group input[type="tel"],    /* Included here for phone numbers */
 .form-group textarea {
     width: 100%;
     padding: 12px;
@@ -393,19 +399,6 @@ img {
     font-family: var(--font-body);
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Specific styling for Phone Number input (assuming type="number" or type="tel") */
-.form-group input[type="number"],
-.form-group input[type="tel"] {
-    width: 100%; /* Ensure consistent width and padding */
-    padding: 12px;
-    font-family: var(--font-body);
-    font-size: 1em;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-    border: 1px solid var(--primary-color); /* Darker border from your palette */
-    border-radius: 2px; /* Less rounded corners to match the image */
 }
 
 .form-group input:focus,
@@ -449,7 +442,8 @@ img {
 /* --- Footer --- */
 .site-footer {
     background-color: var(--bg-dark);
-    color: var(--text-light);    padding: 40px 20px;
+    color: var(--text-light);
+    padding: 40px 20px;
     text-align: center;
 }
 
@@ -478,7 +472,8 @@ img {
     filter: invert(100%); /* Make icons white */
 }
 .site-footer p {
-    font-size: 0.9em;    color: rgba(255, 255, 255, 0.7); /* Kept as is, requires RGBA variable */
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7); /* Kept as is, requires RGBA variable */
 }
 
 /* --- Lightbox Styles --- */
@@ -506,7 +501,9 @@ img {
     max-width: 90%;
     max-height: 90%;
     text-align: center;
-}.lightbox-image {
+}
+
+.lightbox-image {
     max-width: 100%;
     max-height: 80vh; /* Limit image height */
     object-fit: contain;
@@ -516,7 +513,8 @@ img {
 
 .lightbox-caption {
     color: var(--text-light); /* Updated from #fff */
-    font-size: 1.2em;    margin-top: 10px;
+    font-size: 1.2em;
+    margin-top: 10px;
 }
 
 .lightbox-close {
@@ -543,7 +541,8 @@ img {
     transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5); /* Kept as is for overlay */
     color: var(--text-light); /* Updated from white */
-    padding: 15px 20px;    border: none;
+    padding: 15px 20px;
+    border: none;
     cursor: pointer;
     font-size: 2em;
     transition: background-color 0.3s ease;
@@ -562,8 +561,7 @@ img {
 .lightbox-nav.next {
     right: 10px;
     border-radius: 5px 0 0 5px;
-}
-/* --- Responsive Design --- */
+}/* --- Responsive Design --- */
 @media (max-width: 992px) {
     .hero-content h1 {
         font-size: 3.2em;
@@ -629,7 +627,8 @@ img {
     }
 
     .hero-section {
-        height: 80vh; /* Adjust height for mobile */        margin-top: 0; /* No offset needed, header pushes content */
+        height: 80vh; /* Adjust height for mobile */
+        margin-top: 0; /* No offset needed, header pushes content */
         padding-top: var(--header-height);
     }
 
@@ -667,8 +666,7 @@ img {
     }
 
     .hero-content p {
-        font-size: 0.9em;
-    }
+        font-size: 0.9em;    }
 
     .section-title {
         font-size: 1.8em;
@@ -683,8 +681,7 @@ img {
 .folder-thumbnail {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  object-fit: cover;  transition: transform 0.3s ease;
 }
 
 .folder-preview:hover .folder-thumbnail {
