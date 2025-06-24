@@ -1,17 +1,31 @@
 /* --- CSS Variables (Color Palette) --- */
 :root {
-    --primary-color: #3498db; /* Blue */
-    --secondary-color: #2ecc71; /* Green */
-    --accent-color: #e74c3c; /* Red */
-    --text-dark: #333;
-    --text-light: #f4f4f4;
-    --bg-light: #f9f9f9;
-    --bg-dark: #2c3e50; /* Dark blue-grey */
-    --border-color: #ddd;
+    /* Primary UI colors from palette */
+    --primary-color: #373F4E;      /* From black-80 */
+    --secondary-color: #E0E4EB;    /* From white-80 */
+    --accent-color: #E67E6A;       /* Optional highlight (from black-70 or add one like the red in your old theme) */
+
+    /* Text colors */
+    --text-dark: #0A0E15;          /* d.reverse (darkest black) */
+    --text-light: #FFFFFF;         /* d.header */
+    --text-description: #E0E4EB;   /* d.description */
+
+    /* Backgrounds */
+    --bg-dark: #0A0E15;            /* Dark mode base (black-100) */
+    --bg-light: #FFFFFF;           /* Light mode base (white-100) */
+
+    /* Border / surface colors */
+    --border-color: #D1D6E0;       /* Similar to white-70 */
+    --box-bg: #212631;             /* black-90 for containers/cards */
+
+    /* Fonts */
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Open Sans', sans-serif;
+
+    /* Misc */
     --header-height: 80px;
 }
+
 
 /* --- Base Styles & Reset --- */
 * {
