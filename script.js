@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            const response = await fetch('https://formsubmit.co/ajax/your@email.com', {
+            const response = await fetch('https://formsubmit.co/ajax/omniframephotography@gmail.com', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
