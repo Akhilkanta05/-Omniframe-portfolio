@@ -389,6 +389,7 @@ img {
 /* Styling for Email, Text, Textarea inputs (lighter border, rounded corners) */
 .form-group input[type="text"],
 .form-group input[type="email"],
+.form-group input[type="number"],
 .form-group input[type="tel"],
 .form-group textarea {
     width: 100%;
