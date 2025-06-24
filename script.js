@@ -53,8 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.classList.toggle('active');
     });
 
-    // --- Dynamic Gallery Loading from static gallery.json with folders ---
-    document.addEventListener('DOMContentLoaded', () => {
+    // --- Dynamic Folder-Based Gallery ---
     const galleryGrid = document.querySelector('.gallery-grid');
     let allGalleryImages = [];
 
@@ -108,58 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
         openLightbox(0);
     }
 
-    // Lightbox handlers
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.querySelector('.lightbox-image');
-    const lightboxCaption = document.querySelector('.lightbox-caption');
-    const lightboxClose = document.querySelector('.lightbox-close');
-    const prevBtn = document.querySelector('.lightbox-nav.prev');
-    const nextBtn = document.querySelector('.lightbox-nav.next');
-    let currentImageIndex = 0;
-
-    function openLightbox(index) {
-        currentImageIndex = index;
-        const imageData = allGalleryImages[currentImageIndex];
-        if (imageData) {
-            lightboxImage.src = imageData.largeSrc;
-            lightboxCaption.textContent = imageData.caption;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    function navigateLightbox(direction) {
-        currentImageIndex += direction;
-        if (currentImageIndex < 0) currentImageIndex = allGalleryImages.length - 1;
-        else if (currentImageIndex >= allGalleryImages.length) currentImageIndex = 0;
-        openLightbox(currentImageIndex);
-    }
-
-    lightboxClose.addEventListener('click', closeLightbox);
-    prevBtn.addEventListener('click', () => navigateLightbox(-1));
-    nextBtn.addEventListener('click', () => navigateLightbox(1));
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (lightbox.classList.contains('active')) {
-            if (e.key === 'Escape') closeLightbox();
-            else if (e.key === 'ArrowLeft') navigateLightbox(-1);
-            else if (e.key === 'ArrowRight') navigateLightbox(1);
-        }
-    });
-
-    loadGalleryImages();
-});
-
-           
-
     // --- Lightbox ---
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.querySelector('.lightbox-image');
@@ -198,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
     });
+
     document.addEventListener('keydown', (e) => {
         if (lightbox.classList.contains('active')) {
             if (e.key === 'Escape') closeLightbox();
