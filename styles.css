@@ -395,7 +395,7 @@ img {
     padding: 12px;
     border: 1px solid var(--border-color); /* Light border as seen in Email field */
     border-radius: 5px; /* Rounded corners as seen in Email field */
-    font-family: var(--font-body);
+    font-family: var(--border-color);
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
