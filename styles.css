@@ -389,6 +389,8 @@ img {
 /* Styling for Email, Text, Textarea inputs (lighter border, rounded corners) */
 .form-group input[type="text"],
 .form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="tel"],
 .form-group textarea {
     width: 100%;
     padding: 12px;
@@ -399,17 +401,7 @@ img {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Specific styling for Phone Number input (darker border, sharper corners) */
-.form-group input[type="number"],
-.form-group input[type="tel"] { /* Added type="tel" for robustness for phone numbers */
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(---border-color); /* Darkest black from palette, matching strong border in image */
-    border-radius: 5px; /* Sharper corners to match image */
-    font-family: var(--font-body);
-    font-size: 1em;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
+
 
 .form-group input:focus,
 .form-group textarea:focus {
