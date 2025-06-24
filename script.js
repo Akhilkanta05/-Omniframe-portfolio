@@ -155,4 +155,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     loadGalleryImages();
+
+    // --- Contact Form Submission ---
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/your@email.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                formStatus.textContent = 'Message sent successfully!';
+                formStatus.style.color = 'green';
+                contactForm.reset();
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (error) {
+            formStatus.textContent = 'Failed to send message. Please try again later.';
+            formStatus.style.color = 'red';
+        }
+    });
 });
