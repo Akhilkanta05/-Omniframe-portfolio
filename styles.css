@@ -8,7 +8,9 @@
     /* Text colors */
     --text-dark: #0A0E15;          /* d.reverse (darkest black) */
     --text-light: #FFFFFF;         /* d.header */
-    --text-description: #E0E4EB;   /* d.description */    /* Backgrounds */
+    --text-description: #E0E4EB;   /* d.description */
+
+    /* Backgrounds */
     --bg-dark: #0A0E15;            /* Dark mode base (black-100) */
     --bg-light: #FFFFFF;           /* Light mode base (white-100) */
 
@@ -18,9 +20,7 @@
 
     /* Fonts */
     --font-heading: 'Montserrat', sans-serif;
-    --font-body: 'Open Sans', sans-serif;
-
-    /* Misc */
+    --font-body: 'Open Sans', sans-serif;    /* Misc */
     --header-height: 80px;
 }
 
@@ -38,8 +38,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    line-height: 1.6;
-    color: var(--text-dark);
+    line-height: 1.6;    color: var(--text-dark);
     background-color: var(--bg-light); /* Updated from #fff */
 }
 
@@ -215,8 +214,7 @@ img {
 
 .nav-toggle {
     display: none; /* Hidden on desktop */
-    background: none;
-    border: none;
+    background: none;    border: none;
     cursor: pointer;
     padding: 10px;
     position: relative;
@@ -276,8 +274,8 @@ img {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;    padding: 20px;
-}
+    max-width: 800px;
+    padding: 20px;}
 
 .hero-content h1 {
     font-family: var(--font-heading);
@@ -295,7 +293,8 @@ img {
 
 /* --- Gallery Section --- */
 .gallery-grid {
-    display: grid;    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
     gap: 20px;
 }
 
@@ -337,8 +336,7 @@ img {
 /* --- About Section --- */
 .about-content {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */    align-items: center;
     gap: 40px;
 }
 
@@ -365,7 +363,9 @@ img {
     margin-bottom: 15px;
     font-size: 1.1em;
     color: var(--primary-color); /* Updated from #555 */
-}/* --- Contact Section --- */
+}
+
+/* --- Contact Section --- */
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
@@ -386,16 +386,26 @@ img {
     color: var(--bg-dark); /* This matches the dark labels in the image */
 }
 
-/* Unified styling for all text-based inputs (text, email, number/tel, textarea) */
+/* Styling for Email, Text, Textarea inputs (lighter border, rounded corners) */
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group input[type="number"], /* Included here */
-.form-group input[type="tel"],    /* Included here for phone numbers */
 .form-group textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid var(--border-color); /* Light border as seen in Email field */
     border-radius: 5px; /* Rounded corners as seen in Email field */
+    font-family: var(--font-body);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Specific styling for Phone Number input (darker border, sharper corners) */
+.form-group input[type="number"],
+.form-group input[type="tel"] { /* Added type="tel" for robustness for phone numbers */
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--text-dark); /* Darkest black from palette, matching strong border in image */
+    border-radius: 2px; /* Sharper corners to match image */
     font-family: var(--font-body);
     font-size: 1em;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -481,8 +491,7 @@ img {
     display: none; /* Hidden by default */
     position: fixed;
     z-index: 2000; /* Above all other content */
-    left: 0;
-    top: 0;
+    left: 0;    top: 0;
     width: 100%;
     height: 100%;
     overflow: auto; /* Enable scroll if needed */
@@ -561,7 +570,8 @@ img {
 .lightbox-nav.next {
     right: 10px;
     border-radius: 5px 0 0 5px;
-}/* --- Responsive Design --- */
+}
+/* --- Responsive Design --- */
 @media (max-width: 992px) {
     .hero-content h1 {
         font-size: 3.2em;
@@ -666,7 +676,8 @@ img {
     }
 
     .hero-content p {
-        font-size: 0.9em;    }
+        font-size: 0.9em;
+    }
 
     .section-title {
         font-size: 1.8em;
@@ -681,7 +692,8 @@ img {
 .folder-thumbnail {
   width: 100%;
   height: 100%;
-  object-fit: cover;  transition: transform 0.3s ease;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .folder-preview:hover .folder-thumbnail {
