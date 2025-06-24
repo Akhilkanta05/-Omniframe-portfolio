@@ -1,123 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OmniFrame Photography</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OmniFrame Photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <header class="site-header">
-        <nav class="navbar">
-            <a href="#home" class="logo">OmniFrame Photography</a>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </nav>
-    </header>
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="#home" class="logo">OmniFrame Photography</a>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <h1>Capturing Moments, Telling Stories.</h1>
-                <p>Welcome to my world through the lens. Explore my collection of compelling photography.</p>
-                <a href="#gallery" class="btn btn-primary">View My Work</a>
-            </div>
-        </section>
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+      <div class="hero-content">
+        <h1>Capturing Moments, Telling Stories.</h1>
+        <p>Welcome to my world through the lens. Explore my collection of compelling photography.</p>
+        <a href="#gallery" class="btn btn-primary">View My Work</a>
+      </div>
+    </section>
 
-        <!-- Gallery Section -->
-        <section id="gallery" class="gallery-section section-padding">
-            <h2 class="section-title">My Portfolio</h2>
-            <div class="gallery-grid" id="gallery-grid">
-                <!-- Images loaded dynamically -->
-            </div>
-        </section>
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section section-padding">
+      <h2 class="section-title">My Portfolio</h2>
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Images loaded dynamically -->
+      </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about" class="about-section section-padding bg-light">
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="public/images/profile.jpg" alt="Your Profile Picture">
-                </div>
-                <div class="about-text">
-                    <h2 class="section-title">About Me</h2>
-                    <p>Hello! I'm Venkatesh Nikhil, a passionate photographer with a deep love for capturing the beauty in everyday life. My journey began 4 years ago, and since then, I've dedicated myself to freezing moments in time, creating images that evoke emotion and tell compelling stories.</p>
-                    <p>I specialize in Nature, portrait, landscape, event, street photography, always striving to find unique perspectives and light. My goal is to create timeless pieces that resonate with viewers and offer a fresh look at the world around us.</p>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section section-padding">
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="section-subtitle">Have a project in mind or just want to say hello? I'd love to hear from you!</p>
-            <form
-                id="contact-form"
-                class="contact-form"
-                action="https://formspree.io/f/movwkbkz"
-                method="POST"
-            >
-                <!-- Spam Protection Honeypot -->
-                <input type="text" name="_honey" style="display:none">
-                
-                <!-- Redirect After Submission -->
-                <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-                <div id="form-status" class="form-status"></div>
-            </form>
-        </section>
-    </main>
-
-    <!-- Footer Section -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-social">
-                <a href="https://www.instagram.com/omniframe.photography?igsh=ZGt6a2tyZWl1eGhm" target="_blank" aria-label="Instagram">
-                    <img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png" alt="Instagram">
-                </a>
-            </div>
-            <p>&copy; 2023 Your Name. All Rights Reserved.</p>
+    <!-- About Section -->
+    <section id="about" class="about-section section-padding bg-light">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="public/images/profile.jpg" alt="Your Profile Picture"/>
         </div>
-    </footer>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" aria-label="Close Lightbox">&times;</span>
-        <div class="lightbox-content">
-            <img class="lightbox-image" src="" alt="Gallery Image">
-            <p class="lightbox-caption"></p>
+        <div class="about-text">
+          <h2 class="section-title">About Me</h2>
+          <p>Hello! I'm Venkatesh Nikhil, a passionate photographer with a deep love for capturing the beauty in everyday life. My journey began 4 years ago, and since then, I've dedicated myself to freezing moments in time, creating images that evoke emotion and tell compelling stories.</p>
+          <p>I specialize in Nature, portrait, landscape, event, street photography, always striving to find unique perspectives and light. My goal is to create timeless pieces that resonate with viewers and offer a fresh look at the world around us.</p>
+          <a href="#contact" class="btn btn-secondary">Get in Touch</a>
         </div>
-        <button class="lightbox-nav prev" aria-label="Previous image">&#10094;</button>
-        <button class="lightbox-nav next" aria-label="Next image">&#10095;</button>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section section-padding">
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-subtitle">Have a project in mind or just want to say hello? I'd love to hear from you!</p>
+      <form
+        id="contact-form"
+        class="contact-form"
+        action="https://formspree.io/f/movwkbkz"
+        method="POST"
+      >
+        <!-- Spam Protection Honeypot -->
+        <input type="text" name="_honey" style="display:none" />
+
+        <!-- Email Subject and Redirect -->
+        <input type="hidden" name="_subject" value="New Contact Form Submission from OmniFrame">
+        <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html" />
+
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Your Email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" pattern="[0-9+ ]{7,15}" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="6" placeholder="Your Message" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <div id="form-status" class="form-status"></div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-social">
+        <a href="https://www.instagram.com/omniframe.photography?igsh=ZGt6a2tyZWl1eGhm" target="_blank" aria-label="Instagram">
+          <img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png" alt="Instagram" />
+        </a>
+      </div>
+      <p>&copy; 2023 Your Name. All Rights Reserved.</p>
     </div>
+  </footer>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close" aria-label="Close Lightbox">&times;</span>
+    <div class="lightbox-content">
+      <img class="lightbox-image" src="" alt="Gallery Image" />
+      <p class="lightbox-caption"></p>
+    </div>
+    <button class="lightbox-nav prev" aria-label="Previous image">&#10094;</button>
+    <button class="lightbox-nav next" aria-label="Next image">&#10095;</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html>
