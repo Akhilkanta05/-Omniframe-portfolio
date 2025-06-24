@@ -156,36 +156,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadGalleryImages();
 
-    // --- Contact Form Submission ---
+    // --- Contact Form Submission (AJAX + Feedback) ---
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
 
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    if (contactForm && formStatus) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData.entries());
+            formStatus.textContent = 'Sending...';
+            formStatus.style.color = '#333';
 
-        try {
-            const response = await fetch('https://formspree.io/f/movwkbkz', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
+            const formData = new FormData(contactForm);
 
-            if (response.ok) {
-                formStatus.textContent = 'Message sent successfully!';
-                formStatus.style.color = 'green';
-                contactForm.reset();
-            } else {
-                throw new Error('Submission failed');
+            try {
+                const response = await fetch('https://formspree.io/f/movwkbkz', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formStatus.textContent = '✅ Message sent successfully!';
+                    formStatus.style.color = 'green';
+                    contactForm.reset();
+                    contactForm.querySelector('input, textarea').focus();
+                } else {
+                    const res = await response.json();
+                    formStatus.textContent = res.errors?.[0]?.message || '❌ Submission failed.';
+                    formStatus.style.color = 'red';
+                }
+            } catch (error) {
+                formStatus.textContent = '⚠️ Network error. Please try again later.';
+                formStatus.style.color = 'red';
             }
-        } catch (error) {
-            formStatus.textContent = 'Failed to send message. Please try again later.';
-            formStatus.style.color = 'red';
-        }
-    });
+        });
+    }
 });
