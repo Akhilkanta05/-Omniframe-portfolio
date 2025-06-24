@@ -1,9 +1,5 @@
-[
-  "img1.jpg",
-  "img2.jpg",
-  "img3.jpg",
-  "img4.jpg",
-  "img5.jpg",
-  "img6.jpg",
-  "img7.jpg"
-]
+{
+  "nature": ["n1.jpg", "n2.jpg"],
+  "portraits": ["p1.jpg", "p2.jpg"],
+  "lanscape": ["l1.jpg", "l2.jpg"]
+}
